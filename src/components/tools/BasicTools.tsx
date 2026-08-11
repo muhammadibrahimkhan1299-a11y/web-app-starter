@@ -329,7 +329,7 @@ export function ConvertTool({
 }: {
   tool: Tool;
   units: UnitDef[];
-  special?: "temperature";
+  special?: "temperature" | undefined;
   defaultFrom: string;
   defaultTo: string;
 }) {

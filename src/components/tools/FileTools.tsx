@@ -75,7 +75,7 @@ export function ImageTool({
 }: {
   tool: Tool;
   mode: "compress" | "resize" | "convert" | "crop";
-  to?: "png" | "jpeg" | "webp";
+  to?: "png" | "jpeg" | "webp" | undefined;
 }) {
   const [file, setFile] = useState<File | null>(null);
   const [dims, setDims] = useState<{ w: number; h: number } | null>(null);
@@ -822,7 +822,7 @@ export function ShortenerTool({ tool }: { tool: Tool }) {
     setBusy(true);
     const { data, error: rpcError } = await supabase.rpc("create_short_link", {
       p_original_url: value,
-      p_short_code: slug.trim() ? slug.trim().toLowerCase() : undefined,
+      ...(slug.trim() ? { p_short_code: slug.trim().toLowerCase() } : {}),
     });
     setBusy(false);
 
