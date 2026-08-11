@@ -1,4 +1,4 @@
-import { createFileRoute, notFound } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 
 import { AdSlot } from "@/components/AdSlot";
@@ -80,13 +80,13 @@ function ShortLinkResolver({ code }: { code: string }) {
         ? "tablet"
         : "desktop";
 
-    supabase
-      .rpc("resolve_short_link", {
-        p_code: code,
-        p_device: device,
-        p_referrer: document.referrer ? new URL(document.referrer).hostname : "",
-      })
-      .then(({ data }) => {
+    void (async () => {
+      try {
+        const { data } = await supabase.rpc("resolve_short_link", {
+          p_code: code,
+          p_device: device,
+          p_referrer: document.referrer ? new URL(document.referrer).hostname : "",
+        });
         if (cancelled) return;
         const target = data as unknown as string | null;
         if (target && /^https?:\/\//i.test(target)) {
@@ -94,8 +94,10 @@ function ShortLinkResolver({ code }: { code: string }) {
         } else {
           setState("missing");
         }
-      })
-      .catch(() => setState("missing"));
+      } catch {
+        if (!cancelled) setState("missing");
+      }
+    })();
 
     return () => {
       cancelled = true;
@@ -233,5 +235,3 @@ function SlugPage() {
     </div>
   );
 }
-
-export { notFound };
