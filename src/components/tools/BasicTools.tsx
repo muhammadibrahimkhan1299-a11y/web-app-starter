@@ -24,8 +24,9 @@ export function ResultPanel({
 }: {
   label: string;
   value: string;
-  notes?: string[];
-  copyValue?: string;
+  notes?: string[] | undefined;
+  copyValue?: string | undefined;
+
 }) {
   const [copied, setCopied] = useState(false);
   const text = copyValue ?? value;
