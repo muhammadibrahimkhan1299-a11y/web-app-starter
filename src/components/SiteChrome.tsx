@@ -1,4 +1,3 @@
-import { Link } from "@tanstack/react-router";
 import { Menu } from "lucide-react";
 import { useState } from "react";
 
@@ -42,7 +41,7 @@ export function SiteHeader() {
 
         <div className="ml-auto flex items-center gap-2 lg:ml-2">
           <Button asChild variant="outline" size="sm" className="hidden sm:inline-flex">
-            <Link to={user ? "/dashboard" : "/auth"}>{user ? "Dashboard" : "Login"}</Link>
+            <a href={user ? "/dashboard" : "/auth"}>{user ? "Dashboard" : "Login"}</a>
           </Button>
 
           <Sheet open={open} onOpenChange={setOpen}>
