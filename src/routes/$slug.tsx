@@ -22,7 +22,7 @@ export const Route = createFileRoute("/$slug")({
     if (!tool) {
       return { meta: [{ title: `Not found — ${site.name}` }, { name: "robots", content: "noindex" }] };
     }
-    const title = `${tool.name} — Free Online Tool | ${site.name}`;
+    const title = `${tool.name} | ${site.name}`;
     return {
       meta: [
         { title },
