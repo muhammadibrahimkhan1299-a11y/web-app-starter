@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 
-import { categories } from "@/data/types";
 import { tools } from "@/data/tools";
 
 const BASE_URL = "https://utilityflow.lovable.app";
@@ -12,22 +11,11 @@ interface SitemapEntry {
   priority?: string;
 }
 
-export const Route = createFileRoute("/sitemap/xml")({
+export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async () => {
-        const entries: SitemapEntry[] = [
-          { path: "/", changefreq: "weekly", priority: "1.0" },
-          { path: "/tools", changefreq: "weekly", priority: "0.9" },
-        ];
-
-        for (const category of categories) {
-          entries.push({
-            path: `/category/${category.slug}`,
-            changefreq: "weekly",
-            priority: "0.8",
-          });
-        }
+        const entries: SitemapEntry[] = [{ path: "/", changefreq: "weekly", priority: "1.0" }];
 
         for (const tool of tools) {
           entries.push({
