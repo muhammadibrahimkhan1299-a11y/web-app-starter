@@ -10,8 +10,6 @@ import { categories } from "@/data/types";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: `${site.name} — Free Online Tools for Everyday Tasks` },
-      { name: "description", content: site.description },
       { property: "og:title", content: `${site.name} — Free Online Tools for Everyday Tasks` },
       { property: "og:description", content: site.description },
       { property: "og:type", content: "website" },
