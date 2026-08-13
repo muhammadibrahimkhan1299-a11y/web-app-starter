@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
 import { site } from "@/config/site";
 import { categories } from "@/data/types";
-import { useAuth } from "@/hooks/useAuth";
 
 const navLinks = [
   { label: "All tools", to: "/tools" as const },
@@ -16,7 +15,6 @@ const navLinks = [
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
-  const { user } = useAuth();
 
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur">
@@ -40,10 +38,6 @@ export function SiteHeader() {
         </div>
 
         <div className="ml-auto flex items-center gap-2 lg:ml-2">
-          <Button asChild variant="outline" size="sm" className="hidden sm:inline-flex">
-            <a href={user ? "/dashboard" : "/auth"}>{user ? "Dashboard" : "Login"}</a>
-          </Button>
-
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon" className="lg:hidden" aria-label="Open menu">
@@ -65,13 +59,6 @@ export function SiteHeader() {
                       {link.label}
                     </a>
                   ))}
-                  <a
-                    href={user ? "/dashboard" : "/auth"}
-                    onClick={() => setOpen(false)}
-                    className="rounded-lg px-3 py-3 text-base font-medium text-primary"
-                  >
-                    {user ? "Dashboard" : "Login or sign up"}
-                  </a>
                 </nav>
               </div>
             </SheetContent>
