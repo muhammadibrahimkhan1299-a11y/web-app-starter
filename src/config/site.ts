@@ -9,7 +9,7 @@ export const site = {
   domain: "dailytools.com",
   description:
     "Free online calculators, unit converters, text tools, image and PDF utilities, a QR code generator and a link shortener. No sign-up needed.",
-  email: "hello@dailytools.com",
+  email: "muhammadibrahimkhan1299@gmail.com",
   social: {
     twitter: "@dailytools",
   },
