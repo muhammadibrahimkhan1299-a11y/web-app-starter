@@ -82,6 +82,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: `${site.name} — Free Online Tools for Everyday Tasks` },
       { name: "description", content: site.description },
       { name: "google-site-verification", content: "cp7Nff94daF-bEZzpEezSvFnrRuTAcr_10OHR03poW4" },
+      { name: "google-site-verification", content: "QNEqZsgV0vQlhRWsjZu2-ByvGtQo-wgWeXCJU67ueBI" },
       { property: "og:site_name", content: site.name },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
