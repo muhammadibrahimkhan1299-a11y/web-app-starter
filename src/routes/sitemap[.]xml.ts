@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 
 import { tools } from "@/data/tools";
+import { categories } from "@/data/types";
 
 const BASE_URL = "https://utilityflow.lovable.app";
 
