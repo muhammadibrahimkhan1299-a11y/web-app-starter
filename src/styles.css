@@ -194,6 +194,20 @@
   padding-inline: 1rem;
 }
 
+/* Tool and card blocks: smooth hover lift with a deeper shadow. */
+@utility card-lift {
+  transition:
+    transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+
+  &:hover {
+    transform: translateY(-0.4rem);
+    box-shadow: var(--shadow-lift);
+    border-color: color-mix(in oklch, var(--color-primary) 40%, transparent);
+  }
+}
+
 /* Long-form SEO copy at the bottom of every tool page. */
 @utility prose-tool {
   & h2 {
