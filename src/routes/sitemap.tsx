@@ -19,11 +19,7 @@ function SitemapPage() {
     <div className="container-page mx-auto max-w-3xl py-14">
       <h1 className="text-3xl font-bold tracking-tight">Sitemap</h1>
       <p className="mt-2 text-sm text-muted-foreground">
-        Every tool on {site.name}, grouped by category. You can also view the machine-readable{" "}
-        <a href="/sitemap.xml" className="text-primary underline">
-          XML sitemap
-        </a>
-        .
+        Every tool on {site.name}, grouped by category.
       </p>
 
       <div className="mt-8 space-y-8">

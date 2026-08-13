@@ -331,7 +331,7 @@ export const calculatorTools: Tool[] = [
         a: "52 covers the whole year including paid leave. Use 48 if you want to exclude four unpaid weeks.",
       },
     ],
-    related: ["loan-emi-calculator", "profit-calculator", "percentage-calculator"],
+    related: ["profit-calculator", "percentage-calculator"],
     engine: {
       kind: "calc",
       fields: [
@@ -379,66 +379,6 @@ export const calculatorTools: Tool[] = [
             `Per week: ${money(perYear / weeks)}`,
             `Per hour: ${money(perHour)}`,
             "Figures are gross — before tax and other deductions.",
-          ],
-        };
-      },
-    },
-  },
-  {
-    slug: "loan-emi-calculator",
-    name: "Loan / EMI Calculator",
-    category: "calculators",
-    tagline: "Monthly repayment and total interest.",
-    description:
-      "Calculate your monthly loan repayment (EMI), the total interest you will pay and the total cost of the loan over its full term.",
-    keywords: ["emi calculator", "loan calculator", "monthly repayment calculator"],
-    addedAt: "2024-01-25",
-    about:
-      "An EMI (equated monthly instalment) keeps your payment constant while the split between interest and principal shifts over time. Seeing the total interest next to the monthly figure is the fastest way to judge whether a loan term is worth extending.",
-    formula: "EMI = P × r × (1 + r)^n ÷ ((1 + r)^n − 1), where r is the monthly rate and n the number of months",
-    howTo: [
-      "Enter the loan amount you want to borrow.",
-      "Enter the annual interest rate and the term in years.",
-      "Press Calculate to see the monthly instalment and total interest.",
-    ],
-    example:
-      "20,000 over 5 years at 7.5% gives an EMI of about 400.76, with roughly 4,046 paid in interest.",
-    faqs: [
-      {
-        q: "Is the interest rate monthly or yearly?",
-        a: "Enter the annual nominal rate. The calculator divides it by 12 to get the monthly rate used in the EMI formula.",
-      },
-      {
-        q: "Why does a longer term cost more?",
-        a: "A longer term lowers each payment but leaves the balance outstanding for longer, so more interest accrues overall.",
-      },
-    ],
-    related: ["salary-calculator", "percentage-calculator", "profit-calculator"],
-    engine: {
-      kind: "calc",
-      fields: [
-        { name: "principal", label: "Loan amount", placeholder: "20000" },
-        { name: "rate", label: "Annual interest rate", suffix: "%", placeholder: "7.5" },
-        { name: "years", label: "Term", suffix: "years", placeholder: "5" },
-      ],
-      compute: (v) => {
-        const p = n(v["principal"]);
-        const rate = n(v["rate"]);
-        const years = n(v["years"]);
-        if (Number.isNaN(p) || Number.isNaN(rate) || Number.isNaN(years))
-          return { error: "Enter the amount, rate and term." };
-        if (p <= 0 || years <= 0) return { error: "Amount and term must be greater than zero." };
-        const months = Math.round(years * 12);
-        const r = rate / 100 / 12;
-        const emi = r === 0 ? p / months : (p * r * (1 + r) ** months) / ((1 + r) ** months - 1);
-        const total = emi * months;
-        return {
-          label: "Monthly instalment",
-          value: money(emi),
-          notes: [
-            `Total repaid: ${money(total)} over ${months} months`,
-            `Total interest: ${money(total - p)}`,
-            `Interest as a share of the loan: ${fmt(((total - p) / p) * 100)}%`,
           ],
         };
       },
