@@ -3,7 +3,7 @@
  * Change the brand name, tagline, domain or limits here — nothing else needs edits.
  */
 export const site = {
-  name: "DailyTools",
+  name: "Utility Tools",
   tagline: "Simple tools for everyday tasks.",
   /** Bare domain used for display purposes (e.g. short links preview). */
   domain: "dailytools.com",
