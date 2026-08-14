@@ -101,6 +101,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
+    scripts: [
+      {
+        src: "https://ads.halalspark.co.uk/get-auto-ads-script?websiteId=7e9168da-f628-403e-a22c-08146bc471c7&profile=bighalalmoney",
+        async: true,
+      },
+    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,
