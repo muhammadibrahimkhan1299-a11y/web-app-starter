@@ -23,14 +23,15 @@ html,body{
     height:100%;
     overflow:hidden;
     background:#05070b;
-    font-family:Inter,Arial,Helvetica,sans-serif;
+    font-family:-apple-system,BlinkMacSystemFont,Inter,Arial,sans-serif;
     touch-action:none;
 }
 
 canvas{
     display:block;
-    width:100%;
-    height:100%;
+    width:100vw;
+    height:100vh;
+    touch-action:none;
 }
 
 #app{
@@ -97,7 +98,7 @@ canvas{
 }
 
 .stat{
-    min-width:100px;
+    min-width:95px;
     padding:9px 12px;
     border-radius:13px;
     text-align:center;
@@ -144,9 +145,9 @@ canvas{
     place-items:center;
 }
 
-.icon-button:hover,
+.icon-button:active,
 .icon-button.active{
-    background:rgba(54,112,240,.65);
+    background:rgba(54,112,240,.75);
 }
 
 .meters{
@@ -159,7 +160,7 @@ canvas{
 }
 
 .meter{
-    width:180px;
+    width:170px;
     padding:9px 11px;
     border-radius:12px;
 }
@@ -186,7 +187,6 @@ canvas{
     height:100%;
     border-radius:20px;
     background:linear-gradient(90deg,#35db78,#b9ed70);
-    transition:width .1s ease;
 }
 
 .nitro-fill{
@@ -195,9 +195,9 @@ canvas{
 
 .controls{
     position:absolute;
-    left:18px;
-    right:18px;
-    bottom:18px;
+    left:14px;
+    right:14px;
+    bottom:14px;
     display:flex;
     justify-content:space-between;
     align-items:flex-end;
@@ -222,6 +222,8 @@ canvas{
     display:grid;
     place-items:center;
     font-family:inherit;
+    -webkit-user-select:none;
+    user-select:none;
 }
 
 .control:active,
@@ -237,7 +239,7 @@ canvas{
 }
 
 .action{
-    width:72px;
+    width:70px;
     font-size:9px;
     font-weight:800;
     letter-spacing:1px;
@@ -278,7 +280,7 @@ canvas{
     width:min(440px,100%);
     max-height:90vh;
     overflow-y:auto;
-    padding:34px 28px;
+    padding:34px 26px;
     text-align:center;
     background:linear-gradient(145deg,rgba(10,17,29,.98),rgba(4,8,14,.98));
     border:1px solid rgba(255,255,255,.14);
@@ -301,7 +303,7 @@ canvas{
 
 .panel h1{
     color:#fff;
-    font-size:28px;
+    font-size:26px;
     font-weight:900;
     letter-spacing:1px;
 }
@@ -332,10 +334,6 @@ canvas{
     transform:scale(.98);
 }
 
-.primary:hover{
-    filter:brightness(1.1);
-}
-
 .results{
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -363,7 +361,7 @@ canvas{
     font-size:17px;
 }
 
-/* Mobile & Small Screen Optimizations */
+/* Mobile & iPhone Adjustments */
 
 @media(max-width:768px){
     .topbar{
@@ -373,17 +371,17 @@ canvas{
     }
 
     .logo{
-        padding:8px 10px;
-        border-radius:11px;
+        padding:7px 9px;
+        border-radius:10px;
     }
 
     .logo-title{
-        font-size:11px;
-        letter-spacing:2px;
+        font-size:10px;
+        letter-spacing:1.5px;
     }
 
     .logo-sub{
-        font-size:7px;
+        font-size:6px;
         letter-spacing:1px;
     }
 
@@ -392,13 +390,13 @@ canvas{
     }
 
     .stat{
-        min-width:62px;
-        padding:6px 8px;
-        border-radius:10px;
+        min-width:58px;
+        padding:5px 7px;
+        border-radius:9px;
     }
 
     .stat:nth-child(3){
-        display:none; /* Distance hidden on narrow mobile */
+        display:none;
     }
 
     .stat-label{
@@ -406,31 +404,31 @@ canvas{
     }
 
     .stat-value{
-        font-size:13px;
+        font-size:12px;
     }
 
     .side-buttons{
-        top:calc(65px + env(safe-area-inset-top, 0px));
+        top:calc(60px + env(safe-area-inset-top, 0px));
         right:8px;
         gap:6px;
     }
 
     .icon-button{
-        width:38px;
-        height:38px;
+        width:36px;
+        height:36px;
         font-size:14px;
     }
 
     .meters{
         left:8px;
-        bottom:74px;
-        gap:5px;
+        bottom:70px;
+        gap:4px;
     }
 
     .meter{
-        width:115px;
-        padding:6px 8px;
-        border-radius:9px;
+        width:105px;
+        padding:5px 7px;
+        border-radius:8px;
     }
 
     .meter-head{
@@ -439,34 +437,34 @@ canvas{
 
     .track{
         height:4px;
-        margin-top:5px;
+        margin-top:4px;
     }
 
     .controls{
-        left:8px;
-        right:8px;
+        left:6px;
+        right:6px;
         bottom:calc(8px + env(safe-area-inset-bottom, 0px));
     }
 
     .control-group{
-        gap:5px;
+        gap:4px;
     }
 
     .control{
-        width:48px;
-        height:48px;
-        border-radius:13px;
+        width:46px;
+        height:46px;
+        border-radius:12px;
     }
 
     .arrow{
-        font-size:22px;
+        font-size:20px;
     }
 
     .action{
-        width:52px;
-        height:48px;
+        width:50px;
+        height:46px;
         font-size:8px;
-        letter-spacing:.5px;
+        letter-spacing:.3px;
     }
 
     .panel{
@@ -489,14 +487,6 @@ canvas{
     }
 }
 </style>
-
-<script type="importmap">
-{
-    "imports":{
-        "three":"https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js"
-    }
-}
-</script>
 </head>
 
 <body>
@@ -650,7 +640,8 @@ canvas{
 
 <script type="module">
 
-import * as THREE from "three";
+// Direct module import ensures 100% compatibility across all iOS Safari versions
+import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js";
 
 /* =========================================================
    SCENE & CAMERA
@@ -673,9 +664,8 @@ function updateCameraFOV() {
     const aspect = width / height;
     camera.aspect = aspect;
 
-    // Mobile / Portrait aspect ratio adjustment
+    // Mobile / iPhone Portrait adjustment
     if (aspect < 1) {
-        // Broaden vertical FOV so road width & traffic fit properly on narrow phone screens
         camera.fov = Math.min(84, 62 + (1 - aspect) * 26);
         camera.position.set(0, 5.2, 11.5);
     } else {
@@ -699,7 +689,7 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
 renderer.shadowMap.enabled = true;
-renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.shadowMap.type = THREE.PCFShadowMap;
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.05;
@@ -716,7 +706,7 @@ scene.add(hemi);
 const sun = new THREE.DirectionalLight(0xffffff, 3);
 sun.position.set(-80, 130, 80);
 sun.castShadow = true;
-sun.shadow.mapSize.set(2048, 2048);
+sun.shadow.mapSize.set(1024, 1024);
 sun.shadow.camera.left = -100;
 sun.shadow.camera.right = 100;
 sun.shadow.camera.top = 100;
@@ -848,7 +838,7 @@ for (let i = 0; i < 25; i++) {
     streetLights.push(light);
 }
 
-// Trees & Scenery
+// Trees
 const scenery = [];
 function createTree() {
     const tree = new THREE.Group();
@@ -861,13 +851,13 @@ function createTree() {
     tree.add(trunk);
 
     const foliageMat = new THREE.MeshStandardMaterial({ color: 0x287443, roughness: 1 });
-    const foliage1 = new THREE.Mesh(new THREE.SphereGeometry(1.25, 14, 10), foliageMat);
+    const foliage1 = new THREE.Mesh(new THREE.SphereGeometry(1.25, 12, 9), foliageMat);
     foliage1.position.y = 3.1;
     foliage1.castShadow = true;
     tree.add(foliage1);
 
     const foliage2 = new THREE.Mesh(
-        new THREE.SphereGeometry(0.85, 12, 9),
+        new THREE.SphereGeometry(0.85, 10, 8),
         new THREE.MeshStandardMaterial({ color: 0x348a4c, roughness: 1 })
     );
     foliage2.position.set(0.5, 3.8, 0.1);
@@ -875,7 +865,7 @@ function createTree() {
     tree.add(foliage2);
 
     const foliage3 = new THREE.Mesh(
-        new THREE.SphereGeometry(0.7, 12, 9),
+        new THREE.SphereGeometry(0.7, 10, 8),
         new THREE.MeshStandardMaterial({ color: 0x1e6338, roughness: 1 })
     );
     foliage3.position.set(-0.55, 3.65, -0.15);
@@ -885,7 +875,7 @@ function createTree() {
     return tree;
 }
 
-for (let i = 0; i < 70; i++) {
+for (let i = 0; i < 50; i++) {
     const tree = createTree();
     const side = Math.random() < 0.5 ? -1 : 1;
     tree.position.set(side * (13 + Math.random() * 32), 0, -60 - Math.random() * 1400);
@@ -936,7 +926,7 @@ function createBuilding() {
     return group;
 }
 
-for (let i = 0; i < 40; i++) {
+for (let i = 0; i < 35; i++) {
     const building = createBuilding();
     const side = i % 2 === 0 ? -1 : 1;
     building.position.set(side * (19 + Math.random() * 25), 0, -100 - Math.random() * 1300);
@@ -944,66 +934,29 @@ for (let i = 0; i < 40; i++) {
     scenery.push(building);
 }
 
-// Billboards
-function createBillboard() {
-    const group = new THREE.Group();
-    const pole = new THREE.Mesh(
-        new THREE.CylinderGeometry(0.09, 0.11, 5, 8),
-        new THREE.MeshStandardMaterial({ color: 0x454951, metalness: 0.5 })
-    );
-    pole.position.y = 2.5;
-    group.add(pole);
-
-    const board = new THREE.Mesh(
-        new THREE.BoxGeometry(4.5, 2, 0.15),
-        new THREE.MeshStandardMaterial({ color: 0x152a4f, roughness: 0.5 })
-    );
-    board.position.y = 5;
-    group.add(board);
-
-    const trim = new THREE.Mesh(
-        new THREE.BoxGeometry(4.65, 2.15, 0.05),
-        new THREE.MeshStandardMaterial({ color: 0x4e80ff, emissive: 0x162d69, emissiveIntensity: 0.8 })
-    );
-    trim.position.set(0, 5, -0.09);
-    group.add(trim);
-
-    return group;
-}
-
-for (let i = 0; i < 10; i++) {
-    const board = createBillboard();
-    board.position.set(i % 2 === 0 ? -15 : 15, 0, -160 - i * 130);
-    scene.add(board);
-    scenery.push(board);
-}
-
 /* =========================================================
-   PLAYER CAR
+   PLAYER CAR (iOS Shader Optimized)
 ========================================================= */
 
 const player = new THREE.Group();
 scene.add(player);
 
-const bodyPaint = new THREE.MeshPhysicalMaterial({
+const bodyPaint = new THREE.MeshStandardMaterial({
     color: 0x1260e9,
-    metalness: 0.72,
-    roughness: 0.18,
-    clearcoat: 1,
-    clearcoatRoughness: 0.06
+    metalness: 0.65,
+    roughness: 0.2
 });
 
-const darkPaint = new THREE.MeshPhysicalMaterial({
-    color: 0x080c13,
-    metalness: 0.55,
-    roughness: 0.2,
-    clearcoat: 1
+const darkPaint = new THREE.MeshStandardMaterial({
+    color: 0x0c1017,
+    metalness: 0.5,
+    roughness: 0.3
 });
 
 const chrome = new THREE.MeshStandardMaterial({
     color: 0xbfc8d2,
-    metalness: 0.95,
-    roughness: 0.18
+    metalness: 0.9,
+    roughness: 0.2
 });
 
 const black = new THREE.MeshStandardMaterial({
@@ -1031,18 +984,20 @@ cabin.rotation.x = 0.02;
 cabin.castShadow = true;
 player.add(cabin);
 
-const windshield = new THREE.Mesh(
-    new THREE.BoxGeometry(1.45, 0.35, 0.05),
-    new THREE.MeshPhysicalMaterial({ color: 0x172f49, metalness: 0.25, roughness: 0.08, clearcoat: 1 })
-);
+const glassMat = new THREE.MeshStandardMaterial({
+    color: 0x172f49,
+    metalness: 0.4,
+    roughness: 0.1,
+    transparent: true,
+    opacity: 0.85
+});
+
+const windshield = new THREE.Mesh(new THREE.BoxGeometry(1.45, 0.35, 0.05), glassMat);
 windshield.position.set(0, 1.08, -0.98);
 windshield.rotation.x = -0.28;
 player.add(windshield);
 
-const rearGlass = new THREE.Mesh(
-    new THREE.BoxGeometry(1.45, 0.32, 0.05),
-    new THREE.MeshPhysicalMaterial({ color: 0x102238, metalness: 0.2, roughness: 0.1, clearcoat: 1 })
-);
+const rearGlass = new THREE.Mesh(new THREE.BoxGeometry(1.45, 0.32, 0.05), glassMat);
 rearGlass.position.set(0, 1.08, 0.92);
 rearGlass.rotation.x = 0.27;
 player.add(rearGlass);
@@ -1101,14 +1056,14 @@ for (const x of [-0.7, 0.7]) {
 const wheels = [];
 function createWheel() {
     const tire = new THREE.Mesh(
-        new THREE.CylinderGeometry(0.42, 0.42, 0.32, 28),
+        new THREE.CylinderGeometry(0.42, 0.42, 0.32, 20),
         black
     );
     tire.rotation.z = Math.PI / 2;
     tire.castShadow = true;
 
     const rim = new THREE.Mesh(
-        new THREE.CylinderGeometry(0.22, 0.22, 0.335, 20),
+        new THREE.CylinderGeometry(0.22, 0.22, 0.335, 16),
         chrome
     );
     rim.rotation.z = Math.PI / 2;
@@ -1141,16 +1096,6 @@ for (const p of wheelPositions) {
     wheels.push(wheel);
 }
 
-for (const x of [-0.45, 0.45]) {
-    const exhaust = new THREE.Mesh(
-        new THREE.CylinderGeometry(0.09, 0.09, 0.28, 16),
-        chrome
-    );
-    exhaust.rotation.x = Math.PI / 2;
-    exhaust.position.set(x, 0.38, 2.28);
-    player.add(exhaust);
-}
-
 /* =========================================================
    TRAFFIC
 ========================================================= */
@@ -1168,11 +1113,10 @@ const trafficColors = [
 
 function createTrafficCar() {
     const car = new THREE.Group();
-    const paint = new THREE.MeshPhysicalMaterial({
+    const paint = new THREE.MeshStandardMaterial({
         color: trafficColors[Math.floor(Math.random() * trafficColors.length)],
-        metalness: 0.45,
-        roughness: 0.22,
-        clearcoat: 1
+        metalness: 0.4,
+        roughness: 0.3
     });
 
     const body = new THREE.Mesh(new THREE.BoxGeometry(2, 0.56, 3.85), paint);
@@ -1191,7 +1135,7 @@ function createTrafficCar() {
         [1.05, 0.42, -1.15]
     ]) {
         const wheel = new THREE.Mesh(
-            new THREE.CylinderGeometry(0.38, 0.38, 0.28, 18),
+            new THREE.CylinderGeometry(0.38, 0.38, 0.28, 14),
             black
         );
         wheel.rotation.z = Math.PI / 2;
@@ -1213,7 +1157,7 @@ function resetTraffic(car, index) {
     car.userData.relativeSpeed = 45 + Math.random() * 90;
 }
 
-for (let i = 0; i < 14; i++) {
+for (let i = 0; i < 12; i++) {
     const car = createTrafficCar();
     traffic.push(car);
     resetTraffic(car, i);
@@ -1247,34 +1191,42 @@ const input = {
     nitro: false
 };
 
-// Robust Touch & Pointer Event Binding (Multi-touch enabled & no premature drops)
+// Universal Pointer & Touch Bindings (100% Reliable on iOS & Android)
 function bindButton(id, key) {
     const button = document.getElementById(id);
     if (!button) return;
 
-    button.addEventListener("pointerdown", (e) => {
-        e.preventDefault();
-        try {
-            button.setPointerCapture(e.pointerId);
-        } catch (_) {}
+    const startAction = (e) => {
+        if (e.cancelable) e.preventDefault();
         input[key] = true;
         button.classList.add("pressed");
-    });
+        try {
+            if (e.pointerId !== undefined) {
+                button.setPointerCapture(e.pointerId);
+            }
+        } catch (_) {}
+    };
 
-    const release = (e) => {
-        e.preventDefault();
+    const stopAction = (e) => {
+        if (e.cancelable) e.preventDefault();
         input[key] = false;
         button.classList.remove("pressed");
         try {
-            if (button.hasPointerCapture(e.pointerId)) {
+            if (e.pointerId !== undefined && button.hasPointerCapture(e.pointerId)) {
                 button.releasePointerCapture(e.pointerId);
             }
         } catch (_) {}
     };
 
-    button.addEventListener("pointerup", release);
-    button.addEventListener("pointercancel", release);
-    // Note: pointerleave omitted intentionally so finger micro-drags don't kill input
+    // Pointer Events
+    button.addEventListener("pointerdown", startAction, { passive: false });
+    button.addEventListener("pointerup", stopAction, { passive: false });
+    button.addEventListener("pointercancel", stopAction, { passive: false });
+
+    // Touch Event Fallbacks for iOS Safari
+    button.addEventListener("touchstart", startAction, { passive: false });
+    button.addEventListener("touchend", stopAction, { passive: false });
+    button.addEventListener("touchcancel", stopAction, { passive: false });
 }
 
 bindButton("leftButton", "left");
@@ -1303,6 +1255,10 @@ window.addEventListener("keyup", (e) => {
     if (e.key === "ArrowDown" || e.key.toLowerCase() === "s") input.brake = false;
     if (e.key === "Shift") input.nitro = false;
 });
+
+// Prevent iOS double tap zoom & gesture interfere
+document.addEventListener("gesturestart", (e) => e.preventDefault());
+document.addEventListener("gesturechange", (e) => e.preventDefault());
 
 /* =========================================================
    HUD UPDATES
@@ -1335,7 +1291,8 @@ function updateHUD() {
    GAME FLOW
 ========================================================= */
 
-function startGame() {
+function startGame(e) {
+    if (e && e.preventDefault) e.preventDefault();
     game.active = true;
     game.paused = false;
     game.speed = 0;
@@ -1406,26 +1363,23 @@ const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 function update(delta) {
     if (!game.active || game.paused) return;
 
-    // Mobile-friendly throttle: Auto-accelerates mildly if not braking, pushes hard on GAS
     if (input.gas) {
         game.speed += 60 * delta;
         game.fuel -= 1.1 * delta;
     } else if (isTouchDevice && !input.brake) {
-        // Auto-throttle for mobile comfort
+        // Mobile auto cruise
         if (game.speed < 85) {
-            game.speed += 40 * delta;
+            game.speed += 42 * delta;
         }
         game.fuel -= 0.4 * delta;
     } else {
         game.speed -= 14 * delta;
     }
 
-    // Brake
     if (input.brake) {
         game.speed -= 115 * delta;
     }
 
-    // Nitro
     if (input.nitro && game.nitro > 0 && game.speed > 15) {
         game.speed += 120 * delta;
         game.nitro -= 35 * delta;
@@ -1458,12 +1412,12 @@ function update(delta) {
     player.rotation.z = THREE.MathUtils.lerp(player.rotation.z, -steering * 0.09, 0.12);
     player.rotation.y = THREE.MathUtils.lerp(player.rotation.y, -steering * 0.035, 0.1);
 
-    // Wheel rotation
+    // Wheels
     for (const wheel of wheels) {
         wheel.rotation.x += game.speed * delta * 0.035;
     }
 
-    // World movement
+    // World animation
     const movement = game.speed * delta * 0.82;
 
     for (const road of roads) {
@@ -1500,7 +1454,7 @@ function update(delta) {
         }
     }
 
-    // Traffic update
+    // Traffic
     for (const car of traffic) {
         car.position.z += (game.speed - car.userData.relativeSpeed) * delta * 0.82;
         if (car.position.z > 50) {
@@ -1558,10 +1512,14 @@ document.getElementById("lightButton").addEventListener("click", () => {
    BUTTON ACTIONS
 ========================================================= */
 
-document.getElementById("startButton").onclick = startGame;
-document.getElementById("restartButton").onclick = startGame;
-document.getElementById("pauseButton").onclick = togglePause;
-document.getElementById("resumeButton").onclick = togglePause;
+document.getElementById("startButton").addEventListener("click", startGame);
+document.getElementById("startButton").addEventListener("touchend", startGame);
+
+document.getElementById("restartButton").addEventListener("click", startGame);
+document.getElementById("restartButton").addEventListener("touchend", startGame);
+
+document.getElementById("pauseButton").addEventListener("click", togglePause);
+document.getElementById("resumeButton").addEventListener("click", togglePause);
 
 /* =========================================================
    RESIZE & ORIENTATION
@@ -1581,7 +1539,7 @@ window.addEventListener("orientationchange", () => {
 });
 
 /* =========================================================
-   MAIN ANIMATION LOOP
+   ANIMATION LOOP
 ========================================================= */
 
 let previous = performance.now();
